@@ -1,0 +1,11 @@
+#!/bin/bash
+
+BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# Kitty terminal
+rm -rfd ~/.config/kitty
+ln -s ${BASEDIR}/config/kitty ~/.config/kitty
+
+# Neovim 
+rm -rfd ~/.config/nvim
+ln -s ${BASEDIR}/config/nvim ~/.config/nvim

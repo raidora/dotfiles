@@ -9,3 +9,7 @@ ln -s ${BASEDIR}/config/kitty ~/.config/kitty
 # Neovim 
 rm -rfd ~/.config/nvim
 ln -s ${BASEDIR}/config/nvim ~/.config/nvim
+
+# i3
+rm -rfd ~/.config/i3
+ln -s ${BASEDIR}/config/i3 ~/.config/i3

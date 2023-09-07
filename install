@@ -1,15 +1,37 @@
 #!/bin/bash
 
-BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+basedir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+link_config() {
+  if command -v $1 &> /dev/null
+  then
+    echo -n "Linking $1 config to $2 ... "
+    rm -rfd $2 
+    ln -s $basedir/$3 $2
+    echo "Done!"
+    echo
+  else
+    echo "$1 not installed, skipping."
+    echo
+  fi
+}
+
+
+echo
+echo "----Installing dotfiles----"
+echo
 
 # Kitty terminal
-rm -rfd ~/.config/kitty
-ln -s ${BASEDIR}/config/kitty ~/.config/kitty
+link_config "kitty" ~/.config/kitty config/kitty
 
-# Neovim 
-rm -rfd ~/.config/nvim
-ln -s ${BASEDIR}/config/nvim ~/.config/nvim
+# Neovim editor
+link_config "nvim" ~/.config/nvim config/nvim
 
-# i3
-rm -rfd ~/.config/i3
-ln -s ${BASEDIR}/config/i3 ~/.config/i3
+# i3 window manager
+link_config "i3" ~/.config/i3 config/i3
+
+# Awesome window manager
+link_config "awesome" ~/.config/awesome config/awesome 
+
+echo "------Done installing------"
+echo
